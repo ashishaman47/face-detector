@@ -1,0 +1,33 @@
+Step 1: Import open cv
+Step 2: We are loading some pre tarined data on face frontal from open (haar cascade algo)
+        so now we don't have to train our system for detecting images.
+Step 3: Now we read an image or video either from webcam/file (through frames)
+Step 4: Then we convert the img to grayscale
+Step 5: With the help trained face data that we loaded we detect the coordinates of the face from the image
+Step 6: Then we loop over the returned coordinates [()..] and draw green rectangle over the faces in the original colored image
+Step 7: Then we display the image face by holding the screen. 
+
+
+Haar Cascade Algorithm :
+(works on the darkness and lightness technique B&W) 
+In this algorithm we train our model on the basis of superivised learning
+by providing them initially with positive and negative images.
+Positive Image --> Face Image --> label them as "Face"
+Negative Image --> Anything Other than Face --> "not face"
+
+We have to try every Haar Feature, on every training images
+--> Every type, Every Size of each type, every location
+over the image (Each HF gives us a no. Right or Wrong)
+Which ever Haar Feature matches the training img closest is 
+our First winner. (gives a no. b/w 0-100 by subtracting black and white area of haar feature, we give threshold if 50 or higher it matches good for face, closest to 100 is best match)
+we pick 1000 or more Haar feature and that's how we train the cascade object detector (face detector here)
+Now we put all the chain of haar feature in machine learning algo
+and a new picture has to pass through all those features to pass as a face
+if it passes through all the 1000 haar feature then we can say it's face 
+but if doesn't say passes 999 haar feature but not 1 so we can't 
+say it as face.
+(1000 haar feature are stored in that .xml file)
+
+now when we add pic to judge --> so a slide is run over the image to 
+guess whether it's face or not, we keep on increasing the size of slider on each repetition and run all over the image
+if we get 1000 haar feature +ve we consider it as face else not.
